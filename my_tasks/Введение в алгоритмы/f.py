@@ -1,5 +1,3 @@
-import re
-
 def main():
     inputed_text = input().lower()
     reg = re.compile('[^a-zA-Z]')
