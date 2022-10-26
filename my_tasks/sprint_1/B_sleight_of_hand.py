@@ -1,7 +1,11 @@
-# 73037834
+# 73114441
+from collections import Counter
+
 
 def get_neighbors(to_press: int, numbers: str) -> int:
-    record = sum([int(value)//int(value) for value in set(numbers) if numbers.count(value) <= to_press])
+    num_cnt = Counter(numbers)
+    record = sum([int(value)//int(value) for value in set(numbers)
+                 if num_cnt[value] <= to_press])
     return record
 
 
