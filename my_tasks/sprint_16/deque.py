@@ -12,24 +12,22 @@ class Deque:
         return self.__size == 0
         
     def push_back(self, x):
-        if self.__size != self.__max_size:
-            self.__queue[self.__tail] = x
-            self.__tail = (self.__tail + 1) % self.__max_size
-            self.__size += 1
-        else:
-            raise OverflowError
+        if self.__size == self.__max_size:
+            raise OverflowError('Недостаточно памяти.')
+        self.__queue[self.__tail] = x
+        self.__tail = (self.__tail + 1) % self.__max_size
+        self.__size += 1
 
     def push_front(self, x):
-        if self.__size != self.__max_size:
-            self.__queue[self.__head - 1] = x
-            self.__head = (self.__head - 1) % self.__max_size
-            self.__size += 1
-        else:
-            raise OverflowError
+        if self.__size == self.__max_size:
+            raise OverflowError('Недостаточно памяти.')
+        self.__queue[self.__head - 1] = x
+        self.__head = (self.__head - 1) % self.__max_size
+        self.__size += 1
 
     def pop_front(self):
         if self.is_empty():
-            raise IndexError
+            raise IndexError('Нет доступных объектов.')
         else:
             element = self.__queue[self.__head]
             self.__queue[self.__head] = None
@@ -39,7 +37,7 @@ class Deque:
 
     def pop_back(self):
         if self.is_empty():
-            raise IndexError
+            raise IndexError('Нет доступных объектов.')
         else:
             element = self.__queue[self.__tail-1]
             self.__queue[self.__tail-1] = None
