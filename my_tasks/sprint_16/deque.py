@@ -1,4 +1,4 @@
-# 73828382
+# 73897969
 
 class Deque:
     def __init__(self, m):
@@ -28,22 +28,20 @@ class Deque:
     def pop_front(self):
         if self.is_empty():
             raise IndexError('Нет доступных объектов.')
-        else:
-            element = self.__queue[self.__head]
-            self.__queue[self.__head] = None
-            self.__head = (self.__head + 1) % self.__max_size
-            self.__size -= 1
-            return element
+        element = self.__queue[self.__head]
+        self.__queue[self.__head] = None
+        self.__head = (self.__head + 1) % self.__max_size
+        self.__size -= 1
+        return element
 
     def pop_back(self):
         if self.is_empty():
             raise IndexError('Нет доступных объектов.')
-        else:
-            element = self.__queue[self.__tail-1]
-            self.__queue[self.__tail-1] = None
-            self.__tail = (self.__tail - 1) % self.__max_size
-            self.__size -= 1
-            return element
+        element = self.__queue[self.__tail-1]
+        self.__queue[self.__tail-1] = None
+        self.__tail = (self.__tail - 1) % self.__max_size
+        self.__size -= 1
+        return element
 
 
 if __name__ == '__main__':
